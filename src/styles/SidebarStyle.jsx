@@ -2,47 +2,45 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 
+  height: 100vh;
+  .pro-sidebar-inner{
+      background: ${({darkcolor})=>darkcolor.BlueSecondry};
+  }
 
-.image{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.pro-menu-item.active{
+    color: ${({color})=>color.Blue} !important;
+ }  
+
+.pro-menu-item :hover{
+  color: ${({color})=>color.Blue} !important;
+} 
+
+.ProsidebarHeaderContainer{
+    border: 0 !important;
+
+}
+
+.ProsidebarFooterContainer{
+  border: 0 !important;
+}
+
+.DataText{
+   width: 100%;
+   height: 1rem;
+   font-size: 13px;
+   margin-left: 1rem;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+}
+
+.itemContainer{
+  margin-left : 1rem;
+}
+
+
+.MenuItems{
+  font-size: 13px !important; 
   color: ${({ color }) => color.white};
-}
-
-img{
-    width: 5rem;
-    height: 5rem;
-}
-
-.line{
-    width: 98%;
-    border: 1px solid #ccc;
-    margin-bottom: 2px;
-    align-self: center;
-    margin-left: 2px;
-}
-
-.copyright{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${({ color }) => color.Gray};
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 10px;
-  align-self: center;
-  right: 35%;
-  font-size: .6rem;
-  flex-direction: column;
-}
-
-.copyrightInside{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${({ color }) => color.Gray};
-  margin-bottom: 2px;
 }
 
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Clients, Dashboard, MultiScreenLayout, LandingPage } from './pages'
+import { Clients, Dashboard, MultiScreenLayout, LandingPage, AddVendor, AddCustomer, ContactInformation } from './pages'
 
 
 const App = () => {
@@ -9,13 +9,15 @@ const App = () => {
     <BrowserRouter>
       <Routes>
 
-        <Route path='/' element={<LandingPage />} />
-
-        <Route path='/dashboard' element={<MultiScreenLayout />} >
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/dashboard/clients' element={<Clients />} />
+        <Route path='/' element={<MultiScreenLayout />} >
+          <Route index element={<Dashboard />} />
+          <Route path='clients' element={<Clients />} />
+          <Route path='AddVendor' element={<AddVendor />} />
+          <Route path='AddCustomer' element={<AddCustomer />} />
+          <Route path='ContactInfo' element={<ContactInformation />} />
         </Route>
 
+        <Route path='/landing' element={<LandingPage />} />
         <Route path='*' element={<>Page Not found</>} />
       </Routes>
     </BrowserRouter>

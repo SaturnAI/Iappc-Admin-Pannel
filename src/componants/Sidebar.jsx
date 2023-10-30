@@ -1,91 +1,80 @@
 import React, { useState } from 'react'
-import { Sidebar, Menu, MenuItem, sidebarClasses, SubMenu } from 'react-pro-sidebar';
+import { ProSidebar, Menu, MenuItem, SubMenu, SidebarHeader, SidebarContent, SidebarFooter } from 'react-pro-sidebar';
+import 'react-pro-sidebar/dist/css/styles.css';
 import { Link } from 'react-router-dom';
-import { color } from '../assets/colors';
-import logo from '../assets/logo.png';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
+import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
+
+import { SidebarFooterContainer, SidebarHeaderContainer } from '../componants'
+import { darkColors, color } from '../assets/colors.jsx'
+
 import Wrapper from '../styles/SidebarStyle';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
-import GroupAddSharpIcon from '@mui/icons-material/GroupAddSharp';
-import CopyrightRoundedIcon from '@mui/icons-material/CopyrightRounded';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSelected } from '../store/SidebarSlice';
 
-const SidebarContainer = () => {
 
-  const [collapse, setCollapse] = useState(true)
-  
+const Sidebar = () => {
+  const dispatch = useDispatch();
+  const { collapse, selected } = useSelector((state) => state.SidebarSlice)
+
+
+  const Item = ({ title, to, icon }) => {
+
+    return (
+      <MenuItem
+        active={selected === title}
+        className='MenuItems'
+        icon={icon}
+        onClick={() => dispatch(setSelected(title))}
+      >
+        {title} <Link to={to} />
+      </MenuItem>
+
+    )
+  }
+
   return (
-    <Wrapper color={color} >
+    <Wrapper color={color} darkcolor={darkColors} >
+      <ProSidebar collapsed={collapse} >
+        <SidebarHeader className='ProsidebarHeaderContainer' >
+          <SidebarHeaderContainer />
+        </SidebarHeader>
 
-      <Sidebar rootStyles={{
-        [`.${sidebarClasses.container}`]: {
-          height: '100vh',
-          backgroundColor: color.lightBlue2,
+        <SidebarContent >
 
-        },
+          <Menu>
+            <Item title={'Dashboard'} to={'/'} icon={<HomeOutlinedIcon fontSize='small' />} />
 
-
-        border: `1px solid ${color.lightBlue2}`
-      }}
-
-        onMouseOver={() => setCollapse(false)}
-        onMouseOut={() => setCollapse(true)}
-
-        collapsed={collapse} >
-
-        <Menu
-        
-          menuItemStyles={{
-            button: {
-              [`&.active`]: {
-                backgroundColor: '#13395e',
-                color: '#b6c8d9',
-              },
-
-              "&:hover": {
-                backgroundColor: color.white,
-                color: color.primary,
-                borderRadius: "8px !important",
-
-              },
-            },
-          }}
-
-
-        >
-
-
-
-          <div className='image'>
-            <img src={logo} alt="logo" />
-            {!collapse ? <div className='CompanyName'>Innovative Application Consultants</div> : null}
-          </div>
-
-          <div className='line' />
-
-          <MenuItem rootStyles={{ color: color.white }} icon={<HomeRoundedIcon />} component={<Link to={'/dashboard'}  />} > Dashboard</MenuItem>
-
-          <MenuItem rootStyles={{ color: color.white }} icon={<Groups2RoundedIcon />} component={<Link to={'/dashboard/clients'} />}> Clients </MenuItem>
-          <MenuItem rootStyles={{ color: color.white }} icon={<GroupAddSharpIcon />} >Add Client</MenuItem>
-
-
-
-        </Menu>
-
-        {!collapse ?
-          <div className='copyright'>
-            <div className='copyrightInside'>
-              <CopyrightRoundedIcon fontSize='small' /><span>IAPPC</span>
+            <div className="DataText" >
+              Data
             </div>
-            <div>All Rights Reserved {new Date().getFullYear()}</div>
-          </div>
+
+            <Item title={'Manage Team'} to={'clients'} icon={<GroupOutlinedIcon fontSize='small' />} />
+            <Item title={'Contact Information'} to={'ContactInfo'} icon={<ContactsOutlinedIcon fontSize='small' />} />
+
+
+            <div className="DataText" >
+              Forms
+            </div>
+
+            <Item title={'Add Vendor'} to={'AddVendor'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
+            <Item title={'Add Customer'} to={'AddCustomer'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
+          </Menu>
+
+        </SidebarContent>
+
+        {!collapse
+          ?
+          <SidebarFooter className='ProsidebarFooterContainer'>
+            <SidebarFooterContainer />
+          </SidebarFooter>
           :
           null}
-
-
-      </Sidebar>
-
+      </ProSidebar>
     </Wrapper>
   )
 }
 
-export default SidebarContainer
+export default Sidebar

@@ -27,7 +27,7 @@ const LoginPage = () => {
           </div>
         </div>
 
-        <button onClick={()=>navigation('/dashboard', {replace : true})}>Login</button>
+        <button onClick={()=>navigation('/', {replace : true})}>Login</button>
 
         <div className='orLineContainer'>
           <div className='line'></div>

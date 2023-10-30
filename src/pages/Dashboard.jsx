@@ -1,15 +1,30 @@
 import React from 'react'
 import Wrapper from '../styles/DashboardStyle'
-import { Navbar } from '../componants'
 
+//Import colors
+import { color, darkColors } from '../assets/colors.jsx'
+
+//componants
+import { PageHeader, StatsCard } from '../componants'
+import { StatsCardData } from '../utils/mockData'
 
 const Dashboard = () => {
 
   return (
-    <Wrapper>
-      <Navbar />
-      
-      Dashboard
+    <Wrapper color={color} darkcolor={darkColors}>
+      <PageHeader />
+
+      <div className="StatsCardContainer">
+        {
+          StatsCardData.map((item, index) => {
+            return (
+              <StatsCard key={index} {...item} />
+            )
+          })
+        }
+      </div>
+
+
     </Wrapper>
   )
 }

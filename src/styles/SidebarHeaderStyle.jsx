@@ -12,8 +12,12 @@ const Wrapper = styled.div`
 
 .AdminText{
     text-transform: uppercase;
+    cursor: pointer;
 }
 
+.ToggleButton{
+    cursor:  pointer;
+}
 
 .imageBox{
     width: 100%;

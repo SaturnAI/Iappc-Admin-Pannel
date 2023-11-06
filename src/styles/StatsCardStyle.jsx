@@ -31,11 +31,17 @@ border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    align-items: center;
 }
 
 .percentage{
     font-weight: 200;
     font-size: 14px;
+}
+
+.progressBar{
+    width : 4.5rem;
+    height : 4.5rem;
 }
 
 

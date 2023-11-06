@@ -12,7 +12,7 @@ const Dashboard = () => {
 
   return (
     <Wrapper color={color} darkcolor={darkColors}>
-      <PageHeader />
+      <PageHeader title={'Dashboard'} subtitle={'Welcome to the Dashboard'} />
 
       <div className="StatsCardContainer">
         {

@@ -18,6 +18,8 @@ export const color = {
 }
 
 export const darkColors = {
+    primary: '#2E4374',
+    Red: '#FF0000',
     Black: '#181818ea',
     BlackGradTop: '#18181880',
     BlackGradBottom: '#201f1f',
@@ -25,5 +27,6 @@ export const darkColors = {
     Blue: '#868dfb',
     BlueSecondry: '#141b2d',
     DarkBlue: '#1F2A40',
+    Gray: '#808080'
 }
 

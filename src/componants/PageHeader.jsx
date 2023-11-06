@@ -12,13 +12,13 @@ import Wrapper from '../styles/PageHeaderStyle';
 //color
 import { color, darkColors } from '../assets/colors';
 
-const PageHeader = () => {
+const PageHeader = ({title, subtitle}) => {
     return (
         <Wrapper color={color} darkcolor={darkColors} >
             <div className="HeaderContainer">
                 <div className="PageTitleContainer">
-                    <div className="PageTitle">Dashboard</div>
-                    <div className="PageSubtitle">Welcome to the Dashboard</div>
+                    <div className="PageTitle">{title}</div>
+                    <div className="PageSubtitle">{subtitle}</div>
                 </div>
 
 

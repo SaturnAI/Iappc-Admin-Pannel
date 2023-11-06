@@ -12,6 +12,10 @@ import PointOfSaleOutlinedIcon from '@mui/icons-material/PointOfSaleOutlined';
 //colors
 import { color, darkColors } from '../assets/colors'
 
+//ProgrssBar
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+
 const StatsCard = ({ data, text, Progress, id }) => {
 
   return (
@@ -43,10 +47,7 @@ const StatsCard = ({ data, text, Progress, id }) => {
       </div>
       <div className="rightItem">
         <div className="progressBar">
-          progress
-        </div>
-        <div className="percentage">
-          {Progress}
+          <CircularProgressbar value={Progress} text={`${Progress}%`} />
         </div>
       </div>
     </Wrapper>

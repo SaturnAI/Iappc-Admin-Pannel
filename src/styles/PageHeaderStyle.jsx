@@ -6,7 +6,7 @@ const Wrapper = styled.div`
 .HeaderContainer{
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 .PageTitleContainer{
     display: flex;

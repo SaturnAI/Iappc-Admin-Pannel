@@ -1,4 +1,4 @@
-limport React from 'react'
+import React from 'react'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import Wrapper from '../styles/NavbarStyle';
 import { color } from '../assets/colors';

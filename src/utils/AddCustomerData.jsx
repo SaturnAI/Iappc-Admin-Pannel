@@ -25,7 +25,7 @@ export const BasicDetails = [
     },
     {
         title: 'Email',
-        type: 'text',
+        type: 'email',
         placeholder: 'john.smith@gmail.com',
         input: true,
         textarea: false,

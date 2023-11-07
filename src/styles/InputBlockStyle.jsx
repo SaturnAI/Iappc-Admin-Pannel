@@ -20,6 +20,10 @@ input, textarea{
     font-size: 13px;
 }
 
+.inputWarning{
+    border: 2px solid red;
+}
+
 .important{
     color : ${({darkcolor})=>darkcolor.Red}
 }

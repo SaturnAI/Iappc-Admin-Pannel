@@ -1,40 +1,101 @@
-import React from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Wrapper from '../styles/LoginPageStyle'
-import { color } from '../assets/colors'
+import { color, darkColors } from '../assets/colors'
 import logo from '../assets/logo.png'
 import FadeIn from 'react-fade-in/lib/FadeIn'
 import { useNavigate } from 'react-router-dom'
+import { Login } from '../utils/https'
+import { useDispatch, useSelector } from 'react-redux'
+import { setUser, setLogin } from '../store/LoginScreenSlice'
+import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import { Input } from 'antd'
+import Cookies from 'universal-cookie'
 
 const LoginPage = () => {
 
+  const cookies = new Cookies(null, { path: '/' });
+
+  const dispatch = useDispatch();
   const navigation = useNavigate()
+
+  const [userData, setUserData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const { isAuthenticated, warning } = useSelector((state) => state.LoginScreenSlice)
+
+
+  useEffect(() => {
+
+    const authentication = cookies.get('authentication');
+
+    if (authentication) {
+      dispatch(setLogin(cookies.get('name')))
+    }
+
+    if (isAuthenticated) {
+      navigation("/", { replace: true });
+    }
+
+    if (!isAuthenticated) {
+      navigation("/landing", { replace: true });
+    }
+
+  }, [isAuthenticated])
+
+  const handleClick = async () => {
+    const data = await Login(userData);
+    if (data.success == true) {
+      await cookies.set('name', userData.username);
+      await cookies.set('authentication', true);
+    }
+    await dispatch(setUser({ data, username: userData.username }));
+  }
 
   return (
     <FadeIn>
-      <Wrapper color={color}>
+
+      <Wrapper color={color} darkcolor={darkColors}>
+        {warning &&
+          <div className="warning">
+            Invalid Credentials
+          </div>
+        }
         <div className='imageContainer'>
           <img src={logo} alt="logo" />
         </div>
         <div>
           <div className='formContainer' >
-            <div className='usernameText'>Username</div>
-            <input type="text" placeholder='John@gmail.com' />
+            <div className='labelText'>Username</div>
+            <Input prefix={<PersonOutlineOutlinedIcon style={{ color: 'gray' }} />} className='input' type="text" placeholder='John@gmail.com' value={userData.username} onChange={(e) => {
+              setUserData({
+                ...userData,
+                username: e.target.value,
+              })
+            }
+            } />
           </div>
 
           <div className='formContainer'>
-            <div className='PasswordText'>Password</div>
-            <input type="password" placeholder='Password' />
+            <div className='labelText'>Password</div>
+            <Input.Password type="password" placeholder='Password' value={userData.password} onChange={(e) => {
+              setUserData({
+                ...userData,
+                password: e.target.value,
+              })
+            }} />
           </div>
         </div>
 
-        <button onClick={()=>navigation('/', {replace : true})}>Login</button>
+        <button onClick={async () => await handleClick()}>Login</button>
 
         <div className='orLineContainer'>
           <div className='line'></div>
           <div className='orText'>or</div>
         </div>
 
-        <div className='ForgetButton'>Forget password?</div>
+        <div className='ForgetButton'>Forget Password?</div>
 
       </Wrapper>
     </FadeIn>

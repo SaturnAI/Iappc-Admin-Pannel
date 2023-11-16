@@ -23,7 +23,7 @@ const AddCustomer = () => {
       <RibbonsCustomer />
 
       <FormBlock title={'Basic Details'} data={BasicDetails} visibility={basicDetailVisibility} setvisibility={setBasicDetailVisibility} />
-
+      
       <ApiTable Userdata={data} iconVisible={iconVisible} filterVisible={filterVisible} />
 
     </Wrapper>

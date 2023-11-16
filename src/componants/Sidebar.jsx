@@ -45,22 +45,22 @@ const Sidebar = () => {
         <SidebarContent >
 
           <Menu>
-            <Item title={'Dashboard'} to={'/'} icon={<HomeOutlinedIcon fontSize='small' />} />
+            <Item title={'Dashboard'} to={'/dashboard'} icon={<HomeOutlinedIcon fontSize='small' />} />
 
             <div className="DataText" >
               Data
             </div>
 
             <Item title={'Manage Team'} to={'clients'} icon={<GroupOutlinedIcon fontSize='small' />} />
-            <Item title={'Contact Information'} to={'ContactInfo'} icon={<ContactsOutlinedIcon fontSize='small' />} />
+            <Item title={'Contact Information'} to={'contactinfo'} icon={<ContactsOutlinedIcon fontSize='small' />} />
 
 
             <div className="DataText" >
               Forms
             </div>
 
-            <Item title={'Add Vendor'} to={'AddVendor'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
-            <Item title={'Add Customer'} to={'AddCustomer'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
+            <Item title={'Add Vendor'} to={'addvendor'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
+            <Item title={'Add Customer'} to={'addcustomer'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
           </Menu>
 
         </SidebarContent>

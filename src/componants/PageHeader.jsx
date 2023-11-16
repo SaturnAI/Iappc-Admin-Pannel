@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 //Material Icons
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -11,24 +11,45 @@ import Wrapper from '../styles/PageHeaderStyle';
 
 //color
 import { color, darkColors } from '../assets/colors';
+import { useDispatch } from 'react-redux';
+import { setLogout } from '../store/LoginScreenSlice';
+import Cookies from 'universal-cookie';
 
-const PageHeader = ({title, subtitle}) => {
+const PageHeader = ({ title, subtitle }) => {
+    const dispatch = useDispatch();
+    const cookies = new Cookies(null, { path: '/' });
+
+    const [visible, setVisible] = useState(false);
+
     return (
-        <Wrapper color={color} darkcolor={darkColors} >
-            <div className="HeaderContainer">
+        <Wrapper color={color} darkcolor={darkColors}  >
+            <div className="HeaderContainer" >
                 <div className="PageTitleContainer">
                     <div className="PageTitle">{title}</div>
                     <div className="PageSubtitle">{subtitle}</div>
                 </div>
 
 
-                <div className="Buttons">
+                <div className="Buttons"  >
                     <DarkModeOutlinedIcon />
                     <NotificationsOutlinedIcon />
                     <SettingsOutlinedIcon />
-                    <PersonOutlinedIcon />
+                    <div className="profileIcon" onMouseOver={()=>setVisible(true)}  >
+                        <PersonOutlinedIcon  />
+                        {visible &&
+                            <div className="LogoutTab" onMouseLeave={()=>setVisible(false)} onClick={async()=>{
+                               await cookies.remove('authentication');
+                               await cookies.remove('name');
+                               await dispatch(setLogout())
+                            }} >
+                                Logout
+                            </div>}
+                    </div>
                 </div>
+
             </div>
+
+
         </Wrapper>
     )
 }

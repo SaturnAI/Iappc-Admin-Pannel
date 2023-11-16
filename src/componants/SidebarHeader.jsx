@@ -8,6 +8,7 @@ import { setCollapse } from '../store/SidebarSlice';
 const SidebarHeaderContainer = () => {
   const dispatch = useDispatch()
   const { collapse } = useSelector((state) => state.SidebarSlice)
+  const {userName} = useSelector((state)=>state.LoginScreenSlice)
 
   return (
     <Wrapper>
@@ -35,7 +36,7 @@ const SidebarHeaderContainer = () => {
               Welcome!!
             </div>
             <div className="AdminName">
-              Shubham Verma
+              {userName}
             </div>
           </div>
         </div>

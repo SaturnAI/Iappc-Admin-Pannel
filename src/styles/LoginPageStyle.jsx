@@ -9,9 +9,15 @@ const Wrapper = styled.div`
   justify-content: center;
   padding: 2rem;
   border-radius: 10px;
-  margin-top: 3rem;
   box-shadow: 1px 1px 5px 0px black; 
 
+.warning{
+    align-self: center;
+    margin-top: -50px;
+    font-size: 13px;
+    color: ${({darkcolor})=>darkcolor.Red};
+
+}
 
 img{
      width: 8rem;
@@ -32,17 +38,7 @@ img{
     width: 100%;
 }
 
-input{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
 
-input[type='text']:focus,input[type='password']:focus{
-    outline: none;
-    border: 1px solid ${({ color }) => color.primary};
-}
 
 button{
     width: 100%;
@@ -96,6 +92,10 @@ button:hover{
    font-weight: 500;
    cursor: pointer;
     
+}
+
+.labelText{
+    font-size: 13px;
 }
 
 

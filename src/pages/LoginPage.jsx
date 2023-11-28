@@ -47,7 +47,7 @@ const LoginPage = () => {
   const handleClick = async () => {
     const data = await Login(userData);
     if (data.success == true) {
-      await cookies.set('name', userData.username);
+      await cookies.set('name', data.name);
       await cookies.set('authentication', true);
     }
     await dispatch(setUser({ data, username: userData.username }));

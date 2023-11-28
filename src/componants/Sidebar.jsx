@@ -45,7 +45,7 @@ const Sidebar = () => {
         <SidebarContent >
 
           <Menu>
-            <Item title={'Dashboard'} to={'/dashboard'} icon={<HomeOutlinedIcon fontSize='small' />} />
+            <Item title={'Dashboard'} to={'/'} icon={<HomeOutlinedIcon fontSize='small' />} />
 
             <div className="DataText" >
               Data
@@ -59,8 +59,8 @@ const Sidebar = () => {
               Forms
             </div>
 
-            <Item title={'Add Vendor'} to={'addvendor'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
             <Item title={'Add Customer'} to={'addcustomer'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
+            <Item title={'Add Vendor'} to={'addvendor'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
           </Menu>
 
         </SidebarContent>

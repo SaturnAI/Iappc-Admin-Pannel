@@ -119,3 +119,46 @@ export const ApiDetails = [
         ClientSecret : 'siooaiwnic'
     },
 ]
+
+export const AddCustomerDetails = [
+    {
+        title: 'Customer Number',
+        type: 'text',
+        placeholder: '',
+        input: true,
+        textarea: false,
+        important: true,
+    },
+    {
+        title: 'Customer Type',
+        type: 'text',
+        placeholder: 'User/Admin/Customer',
+        input: true,
+        textarea: false,
+        important: true,
+    },
+    {
+        title: 'Customer Name',
+        type: 'text',
+        placeholder: 'John Smith',
+        input: true,
+        textarea: false,
+        important: true,
+    },
+    {
+        title: 'Email',
+        type: 'email',
+        placeholder: 'john.smith@gmail.com',
+        input: true,
+        textarea: false,
+        important: true,
+    },
+    {
+        title: 'Password',
+        type: 'password',
+        placeholder: '',
+        input: true,
+        textarea: false,
+        important: true,
+    },
+]

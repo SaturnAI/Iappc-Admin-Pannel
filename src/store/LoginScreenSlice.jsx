@@ -6,7 +6,7 @@ const LoginScreenSlice = createSlice({
         name : 'LoginScreenSlice',
         initialState : {
            
-            isAuthenticated : false,
+            isAuthenticated : true,
             userName : '',
             warning : false,
             

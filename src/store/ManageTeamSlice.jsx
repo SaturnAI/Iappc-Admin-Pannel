@@ -9,6 +9,8 @@ const initialState = {
     column: 'id',
     operator: 'contain',
     text: "",
+    CustomerBlockVisibility : false,
+
 
 }
 
@@ -16,6 +18,14 @@ const ManageTeamSlice = createSlice({
     name: 'ManageTeamSlice',
     initialState,
     reducers: {
+
+        setCustomerBlockVisibility : (state, action) => {
+                 return {
+                    ...state,
+                    CustomerBlockVisibility : !state.CustomerBlockVisibility,
+                 }
+        },
+
         setIconVisible: (state, action) => {
             return {
                 ...state,
@@ -426,6 +436,7 @@ const ManageTeamSlice = createSlice({
     }
 })
 
+export const setCustomerBlockVisibility = ManageTeamSlice.actions.setCustomerBlockVisibility;
 export const setText = ManageTeamSlice.actions.setText;
 export const startFilter = ManageTeamSlice.actions.startFilter;
 export const setOperator = ManageTeamSlice.actions.setOperator;

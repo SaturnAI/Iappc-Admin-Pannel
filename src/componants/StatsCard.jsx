@@ -20,6 +20,7 @@ const StatsCard = ({ data, text, Progress, id }) => {
 
   return (
     <Wrapper color={color} darkcolor={darkColors}>
+
       <div className="leftItems">
 
         <div className="Icons">

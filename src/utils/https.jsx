@@ -1,4 +1,3 @@
-import { fabClasses } from '@mui/material';
 import axios from 'axios';
 
 export const Login = async ({ username, password }) => {
@@ -18,13 +17,14 @@ export const Login = async ({ username, password }) => {
         const dataresponse = await axios.request(config)
             .then(async (response) => {
 
-                const { is_successful, is_user_exists, last_id } = response.data;
+                const { is_successful, is_user_exists, last_id, username, role } = response.data;
 
-                if (is_successful == true && is_user_exists == true) {
+                if (is_successful == true && is_user_exists == true ) {  //&& role == 'admin'
                     return {
                         "success": true,
                         "message": "Logged In",
                         "last_id": last_id,
+                        "name" : username,
                     }
                 }
                 else if (is_successful == true && is_user_exists == false) {

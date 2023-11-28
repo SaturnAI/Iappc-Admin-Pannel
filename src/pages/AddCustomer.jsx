@@ -18,7 +18,7 @@ const AddCustomer = () => {
   const { iconVisible, filterVisible, data} = useSelector((state) => state.CustomerCardSlice)
   return (
     <Wrapper color={color} darkcolor={darkColors}>
-      <PageHeader title={'Add Customer'} subtitle={'Add Customers to you Organization'} />
+      <PageHeader title={'Customer Details'} subtitle={'Add Customers to you Organization'} />
 
       <RibbonsCustomer />
 

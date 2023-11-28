@@ -2,14 +2,19 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 
+overflow-x : auto;
+overflow-y: auto;
+
+
 .inputFields{
    align-self: center;
    align-items: center;
-   margin: 10px;
+   margin-left: 40px;
+   width: 90%;
    display: inline-grid;
    grid-auto-flow: row;
    grid-template-columns: 1fr 1fr 1fr 1fr; 
-   grid-column-gap: 6.5rem;
+   grid-column-gap: 2rem;
    
    }
 
@@ -50,6 +55,22 @@ const Wrapper = styled.div`
 .hidden{
     visibility: hidden;
     
+}
+
+@media (max-width: 768px) {
+
+    overflow-x: hidden;
+
+    .inputFields{
+   align-self: center;
+   align-items: center;
+   margin-left: 20px;
+   width: 100vw;
+   display: inline-grid;
+   grid-auto-flow: row;
+   grid-template-columns: 1fr 1fr ; 
+   grid-column-gap: 1rem;
+   }
 }
 
 `

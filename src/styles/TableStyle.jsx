@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
 
+overflow-x: auto;
+
 .exportButton{
-    background-color: ${({darkcolor})=>darkcolor.Blue};
+    background-color: ${({ darkcolor }) => darkcolor.Blue};
     display: inline-block;
     padding: 5px;
     border-radius: 10px;
@@ -14,12 +16,12 @@ const Wrapper = styled.div`
 }
 
 .exportButton:hover{
-   color: ${({darkcolor})=>darkcolor.primary}
+   color: ${({ darkcolor }) => darkcolor.primary}
 }
 
 a{
     text-decoration: none;
-    color: ${({darkcolor})=>darkcolor.white};
+    color: ${({ darkcolor }) => darkcolor.white};
     font-weight: 300;
     
 }
@@ -99,7 +101,15 @@ tfoot{
 
 
 
+@media (max-width: 768px) {
 
+
+    table{
+    width: 150vw;  
+    padding: 0 3rem;
+    border-collapse: separate !important;
+  } 
+}
 
 
 `

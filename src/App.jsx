@@ -18,7 +18,7 @@ const App = () => {
 
         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}    />} >
           <Route path='/' element={<MultiScreenLayout />} >
-            <Route index element={<Dashboard />} />
+            <Route index  element={<Dashboard />} />
             <Route path='clients' element={<Clients />} />
             <Route path='addvendor' element={<AddVendor />} />
             <Route path='addcustomer' element={<AddCustomer />} />

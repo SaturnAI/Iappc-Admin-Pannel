@@ -8,8 +8,6 @@ height: 100vh;
   color: ${({ darkcolor }) => darkcolor.white}; 
   
 
-  
-
 `
 
 export default Wrapper;

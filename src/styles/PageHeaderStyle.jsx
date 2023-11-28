@@ -58,6 +58,26 @@ const Wrapper = styled.div`
     padding: 10px;
 }
 
+@media (max-width: 768px) {
+    .PageTitleContainer{
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.PageTitle{
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.PageSubtitle{
+     font-size: 13px;
+     align-self: center;
+     font-weight: 300;
+   } 
+}
+
 
 `
 

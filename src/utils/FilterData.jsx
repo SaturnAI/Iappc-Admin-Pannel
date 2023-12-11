@@ -8,12 +8,16 @@ export const column = [
         value: 'name',
     },
     {
-        title: 'Age',
-        value: 'age',
+        title: 'Address',
+        value: 'address',
     },
     {
-        title: 'Number',
-        value: 'number',
+        title: 'Country',
+        value: 'country',
+    },
+    {
+        title: 'Pincode',
+        value: 'pincode',
     },
     {
         title: 'Email',

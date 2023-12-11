@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setIconVisibleCust, setIconHiddenCust, setFilterHiddenCust, setFilterVisibleCust } from '../store/CustomerCardSlice';
 import SortingComponent from './SortingComponent';
 import DeleteForeverRoundedIcon from '@mui/icons-material/DeleteForeverRounded';
+import { Input } from 'antd';
 
 
 const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
@@ -30,10 +31,16 @@ const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
                             <TableHeaderInsideComponant title={'Destination Name'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
-                            <TableHeaderInsideComponant title={'Api Type'} iconVisible={iconVisible} />
+                            <TableHeaderInsideComponant title={'Auth URL'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
-                            <TableHeaderInsideComponant title={'Api URL'} iconVisible={iconVisible} />
+                            <TableHeaderInsideComponant title={'Data URL'} iconVisible={iconVisible} />
+                        </td>
+                        <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
+                            <TableHeaderInsideComponant title={'Environment'} iconVisible={iconVisible} />
+                        </td>
+                        <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
+                            <TableHeaderInsideComponant title={'Login KEY'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
                             <TableHeaderInsideComponant title={'Client ID'} iconVisible={iconVisible} />
@@ -48,15 +55,17 @@ const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
                 <tbody onClick={() => dispatch(setFilterHiddenCust())} >
 
                     {Userdata.map((item, i) => {
-
                         return (
+
                             <tr key={i}>
                                 <td><DeleteForeverRoundedIcon /></td>
-                                <td>{item.DestinationName}</td>
-                                <td>{item.ApiType}</td>
-                                <td>{item.ApiUrl}</td>
-                                <td>{item.ClientId}</td>
-                                <td>{item.ClientSecret}</td>
+                                <td>{item.type}</td>
+                                <td>{item.auth_url}</td>
+                                <td>{item.data_url}</td>
+                                <td>{item.environment}</td>
+                                <td>{item.login_key}</td>
+                                <td>{item.client_id}</td>
+                                <td>{item.client_secret}</td>
                             </tr>
                         )
                     })}

@@ -3,14 +3,15 @@ import { mockDataTeam } from "../utils/mockData";
 
 const initialState = {
 
-    data: [...mockDataTeam],
+    data: [],
+    backData : [],
     iconVisible: false,
     filterVisible: false,
     column: 'id',
     operator: 'contain',
     text: "",
-    CustomerBlockVisibility : false,
-
+    CustomerBlockVisibility: false,
+    Find: "customer_admin"
 
 }
 
@@ -19,11 +20,29 @@ const ManageTeamSlice = createSlice({
     initialState,
     reducers: {
 
-        setCustomerBlockVisibility : (state, action) => {
-                 return {
-                    ...state,
-                    CustomerBlockVisibility : !state.CustomerBlockVisibility,
-                 }
+        setData: (state, action) => {
+
+            const {data} = action.payload;
+
+            return {
+                ...state,
+                data: [...data],
+                backData : [...data],
+            }
+        },
+
+        setFind: (state, action) => {
+            return {
+                ...state,
+                Find: action.payload,
+            }
+        },
+
+        setCustomerBlockVisibility: (state, action) => {
+            return {
+                ...state,
+                CustomerBlockVisibility: !state.CustomerBlockVisibility,
+            }
         },
 
         setIconVisible: (state, action) => {
@@ -81,7 +100,7 @@ const ManageTeamSlice = createSlice({
             if (action.payload == '') {
                 return {
                     ...state,
-                    data: [...mockDataTeam]
+                    data: [...state.backData]
                 }
             }
 
@@ -385,15 +404,15 @@ const ManageTeamSlice = createSlice({
                     ...state,
                     data: (newData.length > 0) ? newData : current(state).data,
                 }
-            } 
-            
+            }
+
             if (current(state).column == 'accesslevel' && current(state).operator == '<') {
                 const newData = current(state).data.filter(({ access }) => access.length < Number(action.payload))
                 return {
                     ...state,
                     data: (newData.length > 0) ? newData : current(state).data,
                 }
-            } 
+            }
 
             if (current(state).column == 'accesslevel' && current(state).operator == '>') {
                 const newData = current(state).data.filter(({ access }) => access.length > Number(action.payload))
@@ -401,7 +420,7 @@ const ManageTeamSlice = createSlice({
                     ...state,
                     data: (newData.length > 0) ? newData : current(state).data,
                 }
-            } 
+            }
 
             if (current(state).column == 'accesslevel' && current(state).operator == '>=') {
                 const newData = current(state).data.filter(({ access }) => access.length >= Number(action.payload))
@@ -409,7 +428,7 @@ const ManageTeamSlice = createSlice({
                     ...state,
                     data: (newData.length > 0) ? newData : current(state).data,
                 }
-            } 
+            }
 
             if (current(state).column == 'accesslevel' && current(state).operator == '<=') {
                 const newData = current(state).data.filter(({ access }) => access.length <= Number(action.payload))
@@ -417,7 +436,7 @@ const ManageTeamSlice = createSlice({
                     ...state,
                     data: (newData.length > 0) ? newData : current(state).data,
                 }
-            } 
+            }
 
             if (current(state).column == 'accesslevel' && current(state).operator == '!=') {
                 const newData = current(state).data.filter(({ access }) => access != action.payload)
@@ -425,7 +444,7 @@ const ManageTeamSlice = createSlice({
                     ...state,
                     data: (newData.length > 0) ? newData : current(state).data,
                 }
-            } 
+            }
 
 
 
@@ -436,6 +455,8 @@ const ManageTeamSlice = createSlice({
     }
 })
 
+export const setData = ManageTeamSlice.actions.setData;
+export const setFind = ManageTeamSlice.actions.setFind;
 export const setCustomerBlockVisibility = ManageTeamSlice.actions.setCustomerBlockVisibility;
 export const setText = ManageTeamSlice.actions.setText;
 export const startFilter = ManageTeamSlice.actions.startFilter;

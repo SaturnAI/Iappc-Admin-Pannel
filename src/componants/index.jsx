@@ -13,6 +13,8 @@ import SortingComponent from "./SortingComponent";
 import DropMenuOptions from "./DropMenuOptions";
 import RibbonsCustomer from "./RibbonsCustomer";
 import ApiTable from "./ApiTable";
+import FormBlockAddAPI from "./FormBlockAddAPI";
+import RibbonsApi from "./RibbonsApi";
 
 
 export {
@@ -31,4 +33,6 @@ export {
     DropMenuOptions, 
     RibbonsCustomer,
     ApiTable,
+    FormBlockAddAPI,
+    RibbonsApi,
 }

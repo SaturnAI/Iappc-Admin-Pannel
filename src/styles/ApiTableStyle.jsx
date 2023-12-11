@@ -13,6 +13,19 @@ const Wrapper = styled.div`
     top: 20;
 }
 
+
+.border{
+    border-left: 1px solid ${({ darkcolor }) => darkcolor.white};
+    height: 10px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.editableTD {
+    
+}
+
+
 .exportButton:hover{
    color: ${({ darkcolor }) => darkcolor.primary}
 }

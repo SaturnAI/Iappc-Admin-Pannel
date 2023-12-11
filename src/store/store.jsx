@@ -5,6 +5,7 @@ import ManageTeamSlice from './ManageTeamSlice'
 import VendorCardSlice from './VendorCardSlice'
 import CustomerCardSlice from './CustomerCardSlice'
 import LoginScreenSlice from './LoginScreenSlice'
+import AddApiSlice from './AddApiSlice'
 
 export const store = configureStore({
     reducer : {
@@ -14,5 +15,6 @@ export const store = configureStore({
         VendorCardSlice,
         CustomerCardSlice,
         LoginScreenSlice,
+        AddApiSlice,
     }
 })

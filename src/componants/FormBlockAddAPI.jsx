@@ -9,13 +9,10 @@ import { color, darkColors } from '../assets/colors'
 import InputBlock from './InputBlock'
 import { useDispatch, useSelector } from 'react-redux'
 import AddCustomerInputBlockComp from './AddCustomerInput'
+import AddApiInputBlockComp from './AddApiInpuBlock'
 
-const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAdd }) => {
-
+const FormBlockAddAPI = ({ title, data, visibility, setvisibility, AddCustomer, ApiAdd, disable }) => {
     const dispatch = useDispatch()
-
-
-
     return (
 
         <Wrapper color={color} darkcolors={darkColors}>
@@ -30,18 +27,13 @@ const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAd
                 <div className="inputFields">
                     {
                         data.map((item, i) => {
-                            console.log(item)
+                            
                             return (
                                 <div key={i}>
-                                    {CustAdd ?
-                                        <AddCustomerInputBlockComp
-                                         disable={true} 
-                                         title={item.title}
-                                          />
-                                        :
-                                        <InputBlock  {...item} key={i} />
-                                    }
-
+                                    <AddApiInputBlockComp
+                                        {...item}
+                                        disable={disable}
+                                    />
                                 </div>
                             )
                         })
@@ -54,4 +46,4 @@ const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAd
     )
 }
 
-export default FormBlock
+export default FormBlockAddAPI

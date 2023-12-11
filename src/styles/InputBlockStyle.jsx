@@ -11,7 +11,7 @@ textarea, input{ outline: none; }
     font-size: 13px;
 }
 
-input, textarea{
+.input, .textarea{
     width: 230px;
     height: 25px;
     padding: 10px;
@@ -25,7 +25,15 @@ input, textarea{
 }
 
 .important{
-    color : ${({darkcolor})=>darkcolor.Red}
+    color : ${({ darkcolor }) => darkcolor.Red}
+}
+
+.password{
+    width: 230px;
+    height: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
 }
   
 `

@@ -1,3 +1,5 @@
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory"
+
 export const BasicDetails = [
     {
         title: 'Customer Number',
@@ -38,112 +40,124 @@ export const ApiDetails = [
         DestinationName: 'Business Central',
         ApiType: 'Monthly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Expense',
         ApiType: 'Yearly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Expense',
         ApiType: 'Weekly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Business Central',
         ApiType: 'Yearly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Sale Order',
         ApiType: 'Weekly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Expense',
         ApiType: 'Monthly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Business Central',
         ApiType: 'Monthly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Expense',
         ApiType: 'Yearly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Expense',
         ApiType: 'Weekly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Business Central',
         ApiType: 'Yearly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Sale Order',
         ApiType: 'Weekly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
     {
         DestinationName: 'Expense',
         ApiType: 'Monthly Benifits',
         ApiUrl: 'sioudbosnonvonsdonvosinvosindvo',
-        ClientId : 'baiucbiusbeuwbi',
-        ClientSecret : 'siooaiwnic'
+        ClientId: 'baiucbiusbeuwbi',
+        ClientSecret: 'siooaiwnic'
     },
 ]
 
 export const AddCustomerDetails = [
-    {
-        title: 'Customer Number',
-        type: 'text',
-        placeholder: '',
-        input: true,
-        textarea: false,
-        important: true,
-    },
+
     {
         title: 'Customer Type',
         type: 'text',
-        placeholder: 'User/Admin/Customer',
-        input: true,
+        selectData: [{
+            label: "Admin",
+            value: "admin",
+        },
+        {
+            label: "Customer Admin",
+            value: "customer_admin",
+        }],
+        input: false,
         textarea: false,
         important: true,
+        customer: true,
+        DropDown: true,
     },
     {
-        title: 'Customer Name',
+        title: 'First Name',
         type: 'text',
-        placeholder: 'John Smith',
+        placeholder: 'John ',
         input: true,
         textarea: false,
         important: true,
+        customer: true,
+    },
+    {
+        title: 'Last Name',
+        type: 'text',
+        placeholder: 'Smith',
+        input: true,
+        textarea: false,
+        important: true,
+        customer: true,
     },
     {
         title: 'Email',
@@ -152,13 +166,16 @@ export const AddCustomerDetails = [
         input: true,
         textarea: false,
         important: true,
+        customer: true,
     },
     {
         title: 'Password',
         type: 'password',
         placeholder: '',
-        input: true,
+        input: false,
         textarea: false,
         important: true,
+        customer: true,
+        password : true,
     },
 ]

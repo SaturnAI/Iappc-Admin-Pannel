@@ -3,66 +3,132 @@ import { setIconHidden } from "./ManageTeamSlice";
 import { ApiDetails } from "../utils/AddCustomerData";
 
 const initialState = {
-        data : [...ApiDetails],
-        basicDetailVisibility : false,
-        apiDetailsVisibility : false,
-        filterVisible : false,
-        iconVisible : false,
-
+    data: [],
+    ApiData: [],
+    basicDetailVisibility: false,
+    apiDetailsVisibility: false,
+    filterVisible: false,
+    iconVisible: false,
+    first_name: "",
+    last_name: "",
+    role: "customer_admin",
+    email: "",
+    password: "",
 }
 
-export const CustomerCardSlice = createSlice({
+const CustomerCardSlice = createSlice({
     name: 'CustomerCardSlice',
     initialState,
-    reducers : {
+    reducers: {
 
-        setFilterVisibleCust : (state, action) => {
-            return {
-             ...state,
-             filterVisible : true,
-            }
-        },
-
-        setFilterHiddenCust : (state, action) => {
+        setApiData: (state, action) => {
+            const { data } = action.payload;
             return {
                 ...state,
-                filterVisible : false,
+                ApiData: [...data]
             }
         },
 
-        setIconVisibleCust : (state, action) => {
+        setData: (state, action) => {
+            return {
+                ...state,
+                data: [action.payload]
+            }
+        },
+
+        setFilterVisibleCust: (state, action) => {
+            return {
+                ...state,
+                filterVisible: true,
+            }
+        },
+
+        setFilterHiddenCust: (state, action) => {
+            return {
+                ...state,
+                filterVisible: false,
+            }
+        },
+
+        setIconVisibleCust: (state, action) => {
             console.log('visible')
-          return{
-            ...state,
-            iconVisible : true,
-          }
+            return {
+                ...state,
+                iconVisible: true,
+            }
         },
 
-        setIconHiddenCust : (state, action) => {
+        setIconHiddenCust: (state, action) => {
             console.log('hidden')
-              return {
-                ...state,
-                iconVisible : false,
-              }
-        },
-
-        setBasicDetailVisibility : (state, action) =>{
             return {
                 ...state,
-                basicDetailVisibility : !state.basicDetailVisibility
+                iconVisible: false,
             }
         },
 
-        setApiDetailVisibility : (state, action) =>{
+        setBasicDetailVisibility: (state, action) => {
             return {
                 ...state,
-                apiDetailsVisibility : !state.apiDetailsVisibility,
+                basicDetailVisibility: !state.basicDetailVisibility
             }
-        }
-    }
+        },
+
+        setApiDetailVisibility: (state, action) => {
+            return {
+                ...state,
+                apiDetailsVisibility: !state.apiDetailsVisibility,
+            }
+        },
+
+        setRole: (state, action) => {
+            const { type, data } = action.payload;
+
+            if (type == "SET_EMAIL") {
+                return {
+                    ...state,
+                    email: data,
+                }
+            }
+            if (type == "SET_PASSWORD") {
+                return {
+                    ...state,
+                    password: data,
+                }
+            }
+            if (type == "SET_CUSTOMER_TYPE") {
+                return {
+                    ...state,
+                    role: data,
+                }
+            }
+            if (type == "SET_FIRST_NAME") {
+                return {
+                    ...state,
+                    first_name: data,
+                }
+            }
+            if (type == "SET_LAST_NAME") {
+                return {
+                    ...state,
+                    last_name: data,
+                }
+            }
+
+        },
+
+
+
+
+
+    },
+
+
 })
 
 
+export const setApiData = CustomerCardSlice.actions.setApiData;
+export const setData = CustomerCardSlice.actions.setData;
+export const setRole = CustomerCardSlice.actions.setRole;
 export const setIconHiddenCust = CustomerCardSlice.actions.setIconHiddenCust;
 export const setFilterHiddenCust = CustomerCardSlice.actions.setFilterHiddenCust;
 export const setIconVisibleCust = CustomerCardSlice.actions.setIconVisibleCust;

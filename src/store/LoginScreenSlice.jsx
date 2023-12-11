@@ -6,7 +6,7 @@ const LoginScreenSlice = createSlice({
         name : 'LoginScreenSlice',
         initialState : {
            
-            isAuthenticated : true,
+            isAuthenticated : false,
             userName : '',
             warning : false,
             
@@ -49,6 +49,13 @@ const LoginScreenSlice = createSlice({
             },
 
 
+            setAuthentication : (state, action) => {
+                return {
+                    ...state,
+                    isAuthenticated : action.payload,
+                }
+            }
+
 
 
 
@@ -59,6 +66,7 @@ const LoginScreenSlice = createSlice({
 })
 
 
+export const setAuthentication = LoginScreenSlice.actions.setAuthentication;
 export const setLogin = LoginScreenSlice.actions.setLogin;
 export const setLogout = LoginScreenSlice.actions.setLogout;
 export const setUser = LoginScreenSlice.actions.setUser;

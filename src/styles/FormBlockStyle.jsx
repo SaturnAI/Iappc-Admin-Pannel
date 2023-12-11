@@ -5,7 +5,6 @@ const Wrapper = styled.div`
 overflow-x : auto;
 overflow-y: auto;
 
-
 .inputFields{
    align-self: center;
    align-items: center;

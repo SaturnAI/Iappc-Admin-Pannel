@@ -59,7 +59,7 @@ const Sidebar = () => {
               Forms
             </div>
 
-            <Item title={'Add Customer'} to={'addcustomer'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
+            
             <Item title={'Add Vendor'} to={'addvendor'} icon={<PersonAddAltOutlinedIcon fontSize='small' />} />
           </Menu>
 

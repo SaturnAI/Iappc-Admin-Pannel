@@ -4,7 +4,7 @@ import { color, darkColors } from '../assets/colors'
 import logo from '../assets/logo.png'
 import FadeIn from 'react-fade-in/lib/FadeIn'
 import { useNavigate } from 'react-router-dom'
-import { Login } from '../utils/https'
+import { Login, getUser } from '../utils/https'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUser, setLogin } from '../store/LoginScreenSlice'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -29,8 +29,10 @@ const LoginPage = () => {
   useEffect(() => {
 
     const authentication = cookies.get('authentication');
+    const jwtToken = cookies.get('jwtToken');
 
-    if (authentication) {
+
+    if (authentication && jwtToken) {
       dispatch(setLogin(cookies.get('name')))
     }
 
@@ -47,8 +49,16 @@ const LoginPage = () => {
   const handleClick = async () => {
     const data = await Login(userData);
     if (data.success == true) {
-      await cookies.set('name', data.name);
-      await cookies.set('authentication', true);
+      const data2 = await getUser(data.refresh_token, userData.username);
+      if (data2.success == true) {
+        await cookies.set('name', data.name);
+        await cookies.set('authentication', true);
+        await cookies.set('refresh_token', data.refresh_token);
+        await cookies.set('email', userData.username);
+        await cookies.set('customerID', data.customer_id);
+        await cookies.set('jwtToken', data2.jwtToken);
+      }
+
     }
     await dispatch(setUser({ data, username: userData.username }));
   }

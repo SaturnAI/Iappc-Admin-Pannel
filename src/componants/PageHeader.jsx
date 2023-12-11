@@ -40,6 +40,8 @@ const PageHeader = ({ title, subtitle }) => {
                             <div className="LogoutTab" onMouseLeave={()=>setVisible(false)} onClick={async()=>{
                                await cookies.remove('authentication');
                                await cookies.remove('name');
+                               await cookies.remove('refresh_token');
+                               await cookies.remove('jwtToken');
                                await dispatch(setLogout())
                             }} >
                                 Logout

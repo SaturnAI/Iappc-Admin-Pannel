@@ -4,27 +4,33 @@ import React from 'react'
 import Wrapper from '../styles/AddCustomerStyle'
 
 // Components
-import { ApiTable, FormBlock, PageHeader, RibbonsCustomer } from '../componants'
+import { ApiTable, FormBlockAddAPI, PageHeader, RibbonsApi } from '../componants'
 
 // Colors
 import { color, darkColors } from '../assets/colors'
-import { ApiDetails, BasicDetails } from '../utils/AddCustomerData'
 import { useSelector } from 'react-redux'
 import { setApiDetailVisibility, setBasicDetailVisibility } from '../store/CustomerCardSlice'
+import FormBlockAddCust from '../componants/FormBlockAddCust'
 
 const AddCustomer = () => {
 
   const { basicDetailVisibility, apiDetailsVisibility } = useSelector((state) => state.CustomerCardSlice)
-  const { iconVisible, filterVisible, data} = useSelector((state) => state.CustomerCardSlice)
+  const { iconVisible, filterVisible, data, ApiData } = useSelector((state) => state.CustomerCardSlice)
+
+  const { id } = data[0];
+  const AddapiData = useSelector((state) => state.AddApiSlice)
+
   return (
     <Wrapper color={color} darkcolor={darkColors}>
-      <PageHeader title={'Customer Details'} subtitle={'Add Customers to you Organization'} />
+      <PageHeader title={'Customer Details'} subtitle={'Add API For Customer'} />
 
-      <RibbonsCustomer />
+      <RibbonsApi ApiDatatoAdd={AddapiData} id={id} />
 
-      <FormBlock title={'Basic Details'} data={BasicDetails} visibility={basicDetailVisibility} setvisibility={setBasicDetailVisibility} />
-      
-      <ApiTable Userdata={data} iconVisible={iconVisible} filterVisible={filterVisible} />
+      <FormBlockAddCust CustAdd={true} disable={true} title={'Basic'} data={data} visibility={basicDetailVisibility} setvisibility={setBasicDetailVisibility} />
+
+      <FormBlockAddAPI ApiAdd={true} disable={false} title={'Api Details'} data={data} visibility={basicDetailVisibility} setvisibility={setBasicDetailVisibility} />
+
+      <ApiTable Userdata={ApiData} iconVisible={iconVisible} filterVisible={filterVisible} />
 
     </Wrapper>
   )

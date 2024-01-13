@@ -22,6 +22,9 @@ const Table = ({ iconVisible, filterVisible, Userdata }) => {
     const dispatch = useDispatch()
     const navigation = useNavigate()
 
+  const {role} = useSelector((state)=>state.CustomerCardSlice);
+
+
     const headers = [
         {
             label: 'Id',
@@ -64,9 +67,12 @@ const Table = ({ iconVisible, filterVisible, Userdata }) => {
             <table cellSpacing={0} >
                 <thead>
                     <tr>
+                        {
+                        role == "customer_admin" && 
                         <td onMouseOver={() => dispatch(setIconVisible())} onMouseOut={() => dispatch(setIconHidden())}>
                             <TableHeaderInsideComponant title={'Add API'} iconVisible={iconVisible} />
                         </td>
+                        }
                         <td onMouseOver={() => dispatch(setIconVisible())} onMouseOut={() => dispatch(setIconHidden())}>
                             <TableHeaderInsideComponant title={'Id'} iconVisible={iconVisible} />
                         </td>
@@ -86,7 +92,7 @@ const Table = ({ iconVisible, filterVisible, Userdata }) => {
                             <TableHeaderInsideComponant title={'Email'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisible())} onMouseOut={() => dispatch(setIconHidden())}>
-                            <TableHeaderInsideComponant title={'Access Level'} iconVisible={iconVisible} />
+                            <TableHeaderInsideComponant title={'Access Level'} iconVisible={iconVisible}  />
                         </td>
                     </tr>
                 </thead>
@@ -96,12 +102,15 @@ const Table = ({ iconVisible, filterVisible, Userdata }) => {
 
                         return (
                             <tr key={i}>
-                                <td onClick={async () => {
+                                {
+                                    role == "customer_admin" &&
+                                    <td onClick={async () => {
                                     await dispatch(setData(item))
                                     const data = await fetchAPIData(item.id, cookies.get('jwtToken'))
                                     await dispatch(setApiData(data))
                                     navigation('/addcustomer')
-                                }} > <AddIcon /> </td>
+                                }} > <AddIcon /> 
+                                </td>}
                                 <td>{item?.id}</td>
                                 <td>{item?.first_name + " " + item?.last_name}</td>
                                 <td>{item?.address ? item?.address : "Not Exist"}</td>

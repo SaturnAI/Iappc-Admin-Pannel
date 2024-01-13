@@ -28,10 +28,10 @@ const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
                             Delete
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
-                            <TableHeaderInsideComponant title={'Destination Name'} iconVisible={iconVisible} />
+                            <TableHeaderInsideComponant title={'Api Name'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
-                            <TableHeaderInsideComponant title={'Auth URL'} iconVisible={iconVisible} />
+                            <TableHeaderInsideComponant title={'Type'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
                             <TableHeaderInsideComponant title={'Data URL'} iconVisible={iconVisible} />
@@ -40,13 +40,16 @@ const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
                             <TableHeaderInsideComponant title={'Environment'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
-                            <TableHeaderInsideComponant title={'Login KEY'} iconVisible={iconVisible} />
+                            <TableHeaderInsideComponant title={'Login URL'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
                             <TableHeaderInsideComponant title={'Client ID'} iconVisible={iconVisible} />
                         </td>
                         <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
                             <TableHeaderInsideComponant title={'Client Secret'} iconVisible={iconVisible} />
+                        </td>
+                        <td onMouseOver={() => dispatch(setIconVisibleCust())} onMouseOut={() => dispatch(setIconHiddenCust())}>
+                            <TableHeaderInsideComponant title={'Scope'} iconVisible={iconVisible} />
                         </td>
 
                     </tr>
@@ -59,13 +62,16 @@ const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
 
                             <tr key={i}>
                                 <td><DeleteForeverRoundedIcon /></td>
+
+                                <td>{item.api_name}</td>
                                 <td>{item.type}</td>
                                 <td>{item.auth_url}</td>
                                 <td>{item.data_url}</td>
                                 <td>{item.environment}</td>
-                                <td>{item.login_key}</td>
+                                <td>{item.login_url}</td>
                                 <td>{item.client_id}</td>
                                 <td>{item.client_secret}</td>
+                                <td>{item.scope}</td>
                             </tr>
                         )
                     })}

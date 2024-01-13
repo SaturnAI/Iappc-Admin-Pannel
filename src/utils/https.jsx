@@ -27,6 +27,7 @@ export const Login = async ({ username, password }) => {
                         "name": username,
                         "refresh_token": refresh_token,
                         "customer_id": customer_id,
+                        "role": role,
                     }
                 }
                 else if (is_successful == true && is_user_exists == false) {
@@ -65,11 +66,11 @@ export const Login = async ({ username, password }) => {
 
 }
 
-export const SignUp = async ({ first_name, last_name, email, password, role }) => {
+export const SignUp = async ({ first_name, last_name, email, password, setRoleForAddCust, SaleOrder, Enquiry }) => {
 
-    console.log(first_name, last_name, email, password, role)
 
-    if (first_name && last_name && email && password && role) {
+
+    if (first_name && last_name && email && password && setRoleForAddCust ) {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
@@ -79,12 +80,12 @@ export const SignUp = async ({ first_name, last_name, email, password, role }) =
                 "last_name": last_name,
                 "email": email,
                 "password": password,
-                "role": role,
+                "role": setRoleForAddCust,
+                "is_enquiry": Enquiry,
+                "is_sales_order": SaleOrder,
+
             },
         }
-
-
-        console.log(config)
 
         const dataresponse = await axios.request(config)
             .then(async (response) => {
@@ -284,10 +285,11 @@ export const fetchAPIData = async (id, jwtToken) => {
 }
 
 export const AddApiData = async (data, id, token) => {
+   
 
-    const { DestinationName, AuthUrl, DataUrl, ClientID, ClientSecret, LoginKey, Environment } = data;
+    const {ApiName, Type, Environment,  ClientID, ClientSecret, LoginKey, Scope, DataUrl } = data;
 
-    if (DestinationName && AuthUrl && AuthUrl && ClientID && ClientSecret && LoginKey && Environment) {
+    if (ApiName && Type &&  Environment &&  Scope  && ClientID && ClientSecret && LoginKey && DataUrl  ) {
 
         let config = {
             method: 'post',
@@ -297,12 +299,13 @@ export const AddApiData = async (data, id, token) => {
                 "api_details": [
                     {
                         "customer_id": id,
-                        "type": DestinationName,
+                        "api_name" : ApiName,
+                        "type": Type,
                         "environment": Environment,
-                        "login_key": LoginKey,
+                        "login_url": LoginKey,
                         "client_id": ClientID,
                         "client_secret": ClientSecret,
-                        "auth_url": AuthUrl,
+                        "scope"  : Scope,
                         "data_url": DataUrl
                     }
                 ],

@@ -6,7 +6,7 @@ import FadeIn from 'react-fade-in/lib/FadeIn'
 import { useNavigate } from 'react-router-dom'
 import { Login, getUser } from '../utils/https'
 import { useDispatch, useSelector } from 'react-redux'
-import { setUser, setLogin } from '../store/LoginScreenSlice'
+import { setUser, setLogin, setRole } from '../store/LoginScreenSlice'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import { Input } from 'antd'
 import Cookies from 'universal-cookie'
@@ -33,7 +33,8 @@ const LoginPage = () => {
 
 
     if (authentication && jwtToken) {
-      dispatch(setLogin(cookies.get('name')))
+      dispatch(setLogin(cookies.get('name')));
+      dispatch(setRole(cookies.get('role')));
     }
 
     if (isAuthenticated) {
@@ -50,13 +51,14 @@ const LoginPage = () => {
     const data = await Login(userData);
     if (data.success == true) {
       const data2 = await getUser(data.refresh_token, userData.username);
-      if (data2.success == true) {
+      if (data2.success == true) { 
         await cookies.set('name', data.name);
         await cookies.set('authentication', true);
         await cookies.set('refresh_token', data.refresh_token);
         await cookies.set('email', userData.username);
         await cookies.set('customerID', data.customer_id);
         await cookies.set('jwtToken', data2.jwtToken);
+        await cookies.set('role', data.role);
       }
 
     }

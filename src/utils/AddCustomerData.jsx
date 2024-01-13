@@ -127,6 +127,7 @@ export const AddCustomerDetails = [
     {
         title: 'Customer Type',
         type: 'text',
+        defaultValue : 'customer_admin',
         selectData: [{
             label: "Admin",
             value: "admin",
@@ -178,4 +179,40 @@ export const AddCustomerDetails = [
         customer: true,
         password : true,
     },
+    {
+        title: 'Sale Order',
+        type: 'text',
+        defaultValue : true,
+        selectData: [{
+            label: "true",
+            value: true,
+        },
+        {
+            label: "false",
+            value: false,
+        }],
+        input: false,
+        textarea: false,
+        important: true,
+        customer: true,
+        DropDown: true,
+    },
+    {
+        title: 'Enquiry',
+        type: 'text',
+        defaultValue: true,
+        selectData: [{
+            label: "true",
+            value: true,
+        },
+        {
+            label: "false",
+            value: false,
+        }],
+        input: false,
+        textarea: false,
+        important: true,
+        customer: true,
+        DropDown: true,
+    }
 ]

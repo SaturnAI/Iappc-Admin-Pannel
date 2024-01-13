@@ -15,6 +15,7 @@ const RibbonsCustomer = ({ CustomerData }) => {
         <div className="text" onClick={()=>{}}>New</div>
       </div>
       <div className="savebutton" onClick={async () => {
+        // console.log(CustomerData)
         const data = await SignUp(CustomerData)
         console.log(data);
       }}>

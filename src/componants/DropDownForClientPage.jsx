@@ -6,7 +6,7 @@ import { setData, setFind } from '../store/ManageTeamSlice';
 import Cookies from 'universal-cookie';
 import { fetchSignUpData } from '../utils/https';
 
-const DropDownComp = ({ selectData, customer, title, width, find, accessLevel, defaultValue}) => { 
+const DropDownForClientPage = ({ selectData, customer, title, width, find, accessLevel, defaultValue}) => { 
   const dispatch = useDispatch()
   const cookies = new Cookies(null, { path: '/' });
 
@@ -36,7 +36,7 @@ const DropDownComp = ({ selectData, customer, title, width, find, accessLevel, d
 
   return (
     <Select
-      defaultValue={defaultValue}
+      defaultValue="customer_admin"
       style={{
         width: width,
         height: 25,
@@ -49,4 +49,4 @@ const DropDownComp = ({ selectData, customer, title, width, find, accessLevel, d
     />
   )
 };
-export default DropDownComp
+export default DropDownForClientPage

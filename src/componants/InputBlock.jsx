@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { setRole } from '../store/CustomerCardSlice';
 import DropDownComp from './DropDownComp';
 
-const InputBlock = ({ title, name, placeholder, type, password, textarea, DropDown, selectData, customer, input, important}) => {
+const InputBlock = ({ title, defaultValue, name, placeholder, type, password, textarea, DropDown, selectData, customer, input, important}) => {
 
     const dispatch = useDispatch()
 
@@ -72,7 +72,7 @@ const InputBlock = ({ title, name, placeholder, type, password, textarea, DropDo
         <Wrapper Wrapper color = { color } darkcolor = { darkColors } >
             <div className="label">{title} {important ? <span className='important'>*</span> : null} </div>
     { input && <Input className={warning ? 'inputWarning input' : 'input'} type={type}  placeholder={placeholder} onChange={(e) => handleChange(type, e.target.value, customer, title)} /> }
-    { DropDown && <DropDownComp customer={customer} title={title} selectData={selectData} width={230}  /> }
+    { DropDown && <DropDownComp customer={customer} title={title} selectData={selectData} width={230} defaultValue={defaultValue}  /> }
     { textarea && <Input type={type} className='textarea'  placeholder={placeholder} /> }
     { password && <Input.Password className='password' type={type} placeholder={placeholder} onChange={(e) => handleChange(type, e.target.value, customer, title)} /> }
         </Wrapper>

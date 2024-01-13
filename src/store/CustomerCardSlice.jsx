@@ -14,6 +14,9 @@ const initialState = {
     role: "customer_admin",
     email: "",
     password: "",
+    setRoleForAddCust : "customer_admin",
+    SaleOrder : true,
+    Enquiry : true,
 }
 
 const CustomerCardSlice = createSlice({
@@ -117,6 +120,29 @@ const CustomerCardSlice = createSlice({
         },
 
 
+        setEnquiry : (state, action) => {
+             return {
+                ...state,
+                Enquiry : action.payload,
+             }
+        },
+
+        setSaleOrder : (state, action) => {
+             return {
+                ...state,
+                SaleOrder : action.payload,
+             }
+        },
+
+        SetRoleForAddCust : (state, action) => {
+             return {
+                ...state,
+                setRoleForAddCust : action.payload
+             }
+        },
+
+
+
 
 
 
@@ -126,6 +152,9 @@ const CustomerCardSlice = createSlice({
 })
 
 
+export const setEnquiry = CustomerCardSlice.actions.setEnquiry
+export const setSaleOrder = CustomerCardSlice.actions.setSaleOrder
+export const SetRoleForAddCust = CustomerCardSlice.actions.SetRoleForAddCust
 export const setApiData = CustomerCardSlice.actions.setApiData;
 export const setData = CustomerCardSlice.actions.setData;
 export const setRole = CustomerCardSlice.actions.setRole;

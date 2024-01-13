@@ -9,6 +9,7 @@ const LoginScreenSlice = createSlice({
             isAuthenticated : false,
             userName : '',
             warning : false,
+            role : '',
             
         },
 
@@ -54,7 +55,14 @@ const LoginScreenSlice = createSlice({
                     ...state,
                     isAuthenticated : action.payload,
                 }
-            }
+            },
+
+            setRole : (state, action) => {
+                      return{
+                        ...state, 
+                        role : action.payload,
+                      }
+            },
 
 
 
@@ -66,6 +74,7 @@ const LoginScreenSlice = createSlice({
 })
 
 
+export const setRole = LoginScreenSlice.actions.setRole;
 export const setAuthentication = LoginScreenSlice.actions.setAuthentication;
 export const setLogin = LoginScreenSlice.actions.setLogin;
 export const setLogout = LoginScreenSlice.actions.setLogout;

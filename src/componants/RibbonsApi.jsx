@@ -19,6 +19,7 @@ const RibbonsApi = ({ ApiDatatoAdd, id }) => {
             </div>
             <div className="savebutton" onClick={async () => {
                 const token = cookies.get('jwtToken');
+                
                 const data = await AddApiData(ApiDatatoAdd, id, token)
                 if (data.success) {
                     const data = await fetchAPIData(id, token)

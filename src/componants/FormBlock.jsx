@@ -30,7 +30,7 @@ const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAd
                 <div className="inputFields">
                     {
                         data.map((item, i) => {
-                            console.log(item)
+                            
                             return (
                                 <div key={i}>
                                     {CustAdd ?

@@ -6,10 +6,13 @@ import { AddApiData, fetchAPIData } from '../utils/https';
 import Cookies from 'universal-cookie';
 import { setApiData } from '../store/CustomerCardSlice';
 
+
 const RibbonsApi = ({ ApiDatatoAdd, id }) => {
     const cookies = new Cookies(null, { path: '/' });
 
     const dispatch = useDispatch()
+
+    
 
     return (
         <Wrapper>
@@ -19,8 +22,9 @@ const RibbonsApi = ({ ApiDatatoAdd, id }) => {
             </div>
             <div className="savebutton" onClick={async () => {
                 const token = cookies.get('jwtToken');
-                
+
                 const data = await AddApiData(ApiDatatoAdd, id, token)
+                console.log(data)
                 if (data.success) {
                     const data = await fetchAPIData(id, token)
                     await dispatch(setApiData(data))

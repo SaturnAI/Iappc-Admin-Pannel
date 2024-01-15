@@ -24,6 +24,18 @@ const CustomerCardSlice = createSlice({
     initialState,
     reducers: {
 
+        resetForm : (state, action) => {
+               return {
+                ...state,
+                email : "",
+                first_name: "",
+                last_name : "",
+                password : "",
+                SaleOrder : true,
+                Enquiry : true,
+               }
+        },
+
         setApiData: (state, action) => {
             const { data } = action.payload;
             return {
@@ -152,6 +164,8 @@ const CustomerCardSlice = createSlice({
 })
 
 
+
+export const resetForm = CustomerCardSlice.actions.resetForm;
 export const setEnquiry = CustomerCardSlice.actions.setEnquiry
 export const setSaleOrder = CustomerCardSlice.actions.setSaleOrder
 export const SetRoleForAddCust = CustomerCardSlice.actions.SetRoleForAddCust

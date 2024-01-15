@@ -10,10 +10,11 @@ import InputBlock from './InputBlock'
 import { useDispatch, useSelector } from 'react-redux'
 import AddCustomerInputBlockComp from './AddCustomerInput'
 
-const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAdd }) => {
+const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAdd}) => {
 
     const dispatch = useDispatch()
 
+    
 
 
     return (
@@ -30,16 +31,16 @@ const FormBlock = ({ title, data, visibility, setvisibility, AddCustomer, CustAd
                 <div className="inputFields">
                     {
                         data.map((item, i) => {
-                            
+
                             return (
                                 <div key={i}>
                                     {CustAdd ?
                                         <AddCustomerInputBlockComp
-                                         disable={true} 
-                                         title={item.title}
-                                          />
+                                            disable={true}
+                                            title={item.title}
+                                        />
                                         :
-                                        <InputBlock  {...item} key={i} />
+                                        <InputBlock   {...item} key={i} />
                                     }
 
                                 </div>

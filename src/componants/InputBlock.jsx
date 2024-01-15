@@ -17,6 +17,8 @@ const InputBlock = ({ title, defaultValue, name, placeholder, type, password, te
 
     const [warning, setWarning] = useState(false);
 
+    
+
     const handleChange = async (type, value, customer, title) => {
         if (type == 'email') {
             const EmailRegex = new RegExp("^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$")
@@ -72,7 +74,7 @@ const InputBlock = ({ title, defaultValue, name, placeholder, type, password, te
         <Wrapper Wrapper color = { color } darkcolor = { darkColors } >
             <div className="label">{title} {important ? <span className='important'>*</span> : null} </div>
     { input && <Input className={warning ? 'inputWarning input' : 'input'} type={type}  placeholder={placeholder} onChange={(e) => handleChange(type, e.target.value, customer, title)} /> }
-    { DropDown && <DropDownComp customer={customer} title={title} selectData={selectData} width={230} defaultValue={defaultValue}  /> }
+    { DropDown && <DropDownComp  customer={customer} title={title} selectData={selectData} width={230} defaultValue={defaultValue}  /> }
     { textarea && <Input type={type} className='textarea'  placeholder={placeholder} /> }
     { password && <Input.Password className='password' type={type} placeholder={placeholder} onChange={(e) => handleChange(type, e.target.value, customer, title)} /> }
         </Wrapper>

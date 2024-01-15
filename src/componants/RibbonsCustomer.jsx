@@ -5,19 +5,24 @@ import { useDispatch } from 'react-redux';
 import { SignUp } from '../utils/https';
 
 
-const RibbonsCustomer = ({ CustomerData }) => {
+const RibbonsCustomer = ({ CustomerData, Notification}) => {
 
+  const dispatch = useDispatch()
 
   return (
     <Wrapper>
       <div className="newItemContainer">
         <AddIcon fontSize='small' />
-        <div className="text" onClick={()=>{}}>New</div>
+        <div className="text" onClick={() => { }}>New</div>
       </div>
       <div className="savebutton" onClick={async () => {
-        // console.log(CustomerData)
         const data = await SignUp(CustomerData)
-        console.log(data);
+        if (data.success == true) {
+          await Notification("User Created");
+        } else {
+          await Notification(data.message)
+        }
+
       }}>
         Save
       </div>

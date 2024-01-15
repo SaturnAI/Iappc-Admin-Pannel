@@ -65,7 +65,6 @@ const ApiTable = ({ iconVisible, filterVisible, Userdata }) => {
 
                                 <td>{item.api_name}</td>
                                 <td>{item.type}</td>
-                                <td>{item.auth_url}</td>
                                 <td>{item.data_url}</td>
                                 <td>{item.environment}</td>
                                 <td>{item.login_url}</td>

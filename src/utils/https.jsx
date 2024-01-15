@@ -286,7 +286,7 @@ export const fetchAPIData = async (id, jwtToken) => {
 
 export const AddApiData = async (data, id, token) => {
    
-
+    //   console.log(data)
     const {ApiName, Type, Environment,  ClientID, ClientSecret, LoginKey, Scope, DataUrl } = data;
 
     if (ApiName && Type &&  Environment &&  Scope  && ClientID && ClientSecret && LoginKey && DataUrl  ) {
@@ -317,6 +317,7 @@ export const AddApiData = async (data, id, token) => {
 
         const dataresponse = await axios.request(config)
             .then((response) => {
+                
                 const { is_successful } = response.data;
 
                 if (is_successful) {

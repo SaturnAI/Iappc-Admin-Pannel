@@ -1,7 +1,10 @@
 import React from 'react'
 import { Select } from 'antd'
+import { useDispatch } from 'react-redux'
 
 const DropDownForApiDetails = ({data, defaultValue, change}) => {
+
+  const dispatch = useDispatch()
 
   return (
     <Select
@@ -13,7 +16,7 @@ const DropDownForApiDetails = ({data, defaultValue, change}) => {
         marginBottom: 10,
         fontSize: 14
       }}
-      onChange={(value) => change(value)}
+      onChange={(value) => dispatch(change(value))}
       options={data}
     />
   )

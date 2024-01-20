@@ -19,6 +19,10 @@ export const ApiDropDown = [
         label : "Store Enquiry",
         value : "store_enquiry",
     },
+    {
+        label : "Item Category",
+        value : "item_category",
+    },
     
 ]
 
